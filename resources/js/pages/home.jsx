@@ -1,17 +1,42 @@
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/userSlice";
+import Banner from "../components/banner";
+import Navbar from "../components/navbar";
+import Row from "../components/row";
+import Welcome from "../components/welcome";
+import MovieRequests from "../services/movieConstant";
 
 const Home = () => {
-    const { payload: user } = useSelector(selectUser);
+    const user = useSelector(selectUser);
 
     return (
-        <div className="w-full min-h-screen pt-10">
-            <div className="max-w-md m-auto p-5 bg-white border rounded">
-                <h2 className="text-2xl font-bold">Welcome {user.name} </h2>
-                <p className="text-gray-600">
-                    This is a Laravel and React starter kit powered by redux and
-                    tailwindcss
-                </p>
+        <div className="w-full">
+            <Navbar />
+            <div className="mx-auto">
+                {!user ? (
+                    <Welcome />
+                ) : (
+                    <>
+                        <Banner />
+                        <div className="bg-slate-900 pt-10 w-full">
+                            <div className=" mx-auto max-w-6xl px-12">
+                                {Object.keys(MovieRequests).map(
+                                    (key, index) => {
+                                        return (
+                                            <Row
+                                                key={index}
+                                                title={MovieRequests[key].title}
+                                                fetchUrl={
+                                                    MovieRequests[key].url
+                                                }
+                                            />
+                                        );
+                                    }
+                                )}
+                            </div>
+                        </div>
+                    </>
+                )}
             </div>
         </div>
     );

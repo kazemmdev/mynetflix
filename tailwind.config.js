@@ -6,6 +6,9 @@ module.exports = {
     ],
     theme: {
         extend: {
+            maxWidth: {
+                "8xl": "1920px",
+            },
             transformOrigin: {
                 0: "0%",
             },

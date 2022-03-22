@@ -11,23 +11,17 @@ const ReactRoutes = () => {
 
     return (
         <BrowserRouter>
-            <Navbar />
-            <main className="bg-slate-50 h-full w-full">
-                <Routes>
-                    <Route
-                        path="/"
-                        element={user ? <Home /> : <Navigate to="login" />}
-                    />
-                    <Route
-                        path="/login"
-                        element={user ? <Navigate to="/" /> : <Login />}
-                    />
-                    <Route
-                        path="/register"
-                        element={user ? <Navigate to="/" /> : <Register />}
-                    />
-                </Routes>
-            </main>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route
+                    path="/login"
+                    element={user ? <Navigate to="/" /> : <Login />}
+                />
+                <Route
+                    path="/register"
+                    element={user ? <Navigate to="/" /> : <Register />}
+                />
+            </Routes>
         </BrowserRouter>
     );
 };

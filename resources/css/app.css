@@ -10,6 +10,33 @@ input:not(:placeholder-shown) ~ label {
 }
 
 input:focus ~ label {
-    @apply text-black;
+    @apply text-white;
     @apply left-0;
+}
+
+.concord-img-gradient {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    background-image: linear-gradient(
+        to top,
+        rgba(0, 0, 0, 0.8) 0,
+        rgba(0, 0, 0, 0) 60%,
+        rgba(0, 0, 0, 0.8) 100%
+    );
+}
+
+.marker-bg {
+    width: 50px;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    background: linear-gradient(270deg, hsla(0, 0%, 100%, 0), #0f172a 50%);
+}
+
+.marker-bg > img {
+    margin-right: 25px;
 }
