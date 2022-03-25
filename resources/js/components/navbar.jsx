@@ -23,6 +23,15 @@ const Navbar = () => {
                             </Link>
                         </div>
                     )}
+                    {user && (
+                        <Link to="/profile" className="cursor-pointer">
+                            <img
+                                className="w-10 h-10 rounded-md"
+                                src="https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png"
+                                alt=""
+                            />
+                        </Link>
+                    )}
                 </div>
             </div>
         </div>

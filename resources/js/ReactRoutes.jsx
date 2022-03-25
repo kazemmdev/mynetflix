@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import Navbar from "./components/navbar";
 import Home from "./pages/home";
 import Login from "./pages/login";
+import Profile from "./pages/profile";
 import Register from "./pages/register";
 import { selectUser } from "./store/userSlice";
 
@@ -21,6 +21,7 @@ const ReactRoutes = () => {
                     path="/register"
                     element={user ? <Navigate to="/" /> : <Register />}
                 />
+                <Route path="/profile" element={<Profile />} />
             </Routes>
         </BrowserRouter>
     );

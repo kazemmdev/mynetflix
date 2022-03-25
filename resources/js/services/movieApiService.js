@@ -45,5 +45,8 @@ export function fetchMovies(url) {
 }
 
 export function getPoster(movie, large = true) {
-    return imgUrl + (large ? movie?.poster_path : movie?.backdrop_path);
+    return (
+        imgUrl +
+        (large ? movie.backdrop_path ?? movie.poster_path : movie.poster_path)
+    );
 }

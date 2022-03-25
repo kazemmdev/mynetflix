@@ -4,6 +4,7 @@ import MovieContainer from "./movieContainer";
 import leftSvg from "../../assets/left.svg";
 
 const Row = ({ title, fetchUrl, isLargeRow = false }) => {
+    const steps = 3;
     const refMovies = useRef();
     const refContainer = useRef();
     const [movies, setMovies] = useState(null);
@@ -26,7 +27,7 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
 
     const handleScrollLeft = () => {
         const leftStep =
-            scroll < stepCalculator(2) ? scroll + stepCalculator(2) : 0;
+            scroll < stepCalculator(steps-1) ? scroll + stepCalculator(steps) : 0;
 
         refMovies.current.style.transform = `translateX(${leftStep}px)`;
 
@@ -40,8 +41,8 @@ const Row = ({ title, fetchUrl, isLargeRow = false }) => {
         const containerWidth = refContainer.current.clientWidth;
 
         const rightStep =
-            -scroll < moviesWidth - containerWidth - stepCalculator(2)
-                ? scroll - stepCalculator(2)
+            -scroll < moviesWidth - containerWidth - stepCalculator(steps)
+                ? scroll - stepCalculator(steps)
                 : containerWidth - moviesWidth;
 
         refMovies.current.style.transform = `translateX(${rightStep}px)`;

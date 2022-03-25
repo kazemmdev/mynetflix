@@ -19,7 +19,7 @@ const Home = () => {
                     <>
                         <Banner />
                         <div className="bg-slate-900 pt-10 w-full">
-                            <div className=" mx-auto max-w-6xl px-12">
+                            <div className="w-full max-w-8xl mx-auto px-12">
                                 {Object.keys(MovieRequests).map(
                                     (key, index) => {
                                         return (
