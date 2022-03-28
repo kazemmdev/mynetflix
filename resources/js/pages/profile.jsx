@@ -1,9 +1,22 @@
 import Navbar from "../components/navbar";
 import { useSelector } from "react-redux";
 import { selectUser } from "../store/userSlice";
+import { getPlans } from "../services/subscriptionService";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Profile = () => {
     const user = useSelector(selectUser);
+    const [plans, setPlans] = useState(null);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            const response = await getPlans();
+            setPlans(response.data);
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className="w-full">
@@ -33,50 +46,41 @@ const Profile = () => {
                             <h2 className="text-3xl text-white pb-2 pt-10 border-b border-gray-500">
                                 Plans
                             </h2>
-                            <div className="my-5 flex items-center">
-                                <div className="flex-1">
-                                    <p className="text-sm text-white flex-1">
-                                        Netflix Standard
-                                        <span className="text-gray-400 pl-2">
-                                            (480p)
-                                        </span>
-                                    </p>
-                                </div>
-                                <button className="mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm">
-                                    Subscribe
-                                </button>
-                            </div>
-                            <div className="my-5 flex items-center">
-                                <div className="flex-1">
-                                    <p className="text-sm text-white flex-1">
-                                        Netflix Basic
-                                        <span className="text-gray-400 pl-2">
-                                            (1080p)
-                                        </span>
-                                    </p>
-                                </div>
-                                <button className="mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm">
-                                    Subscribe
-                                </button>
-                            </div>
-                            <div className="my-5 flex items-center">
-                                <div className="flex-1">
-                                    <p className="text-sm text-white flex-1">
-                                        Netflix Premium
-                                        <span className="text-gray-400 pl-2">
-                                            (4k)
-                                        </span>
-                                    </p>
-                                </div>
-                                <button className="mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm">
-                                    Subscribe
-                                </button>
-                            </div>
-                            <div>
-                                <button className="bg-red-600 w-full rounded-md mt-5 py-2 text-white ">
-                                    Sign out
-                                </button>
-                            </div>
+                            {plans &&
+                                plans.map((item) => (
+                                    <div
+                                        key={item.id}
+                                        className="my-5 flex items-center"
+                                    >
+                                        <div className="flex-1">
+                                            <p className="text-sm text-white flex-1">
+                                                {item.display_name}
+                                                <span className="text-gray-400 pl-2">
+                                                    ({item.quality})
+                                                </span>
+                                                <span className="text-gray-100 pl-2">
+                                                    {item.price}$ / month
+                                                </span>
+                                            </p>
+                                        </div>
+                                        {user?.payload.subscribed &&
+                                        item.id === user?.payload.plan.id ? (
+                                            <div className="mr-a text-white px-2 py-1 text-sm">
+                                                {user?.payload.plan.expires_at}
+                                            </div>
+                                        ) : (
+                                            <Link
+                                                to={"/subscribe/" + item.id}
+                                                className="mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm"
+                                            >
+                                                Subscribe
+                                            </Link>
+                                        )}
+                                    </div>
+                                ))}
+                            <button className="bg-red-600 w-full rounded-md mt-5 py-2 text-white ">
+                                Sign out
+                            </button>
                         </div>
                     </div>
                 </div>

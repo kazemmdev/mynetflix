@@ -1,10 +1,12 @@
 import { useSelector } from "react-redux";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { selectUser } from "./store/userSlice";
+
 import Home from "./pages/home";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
 import Register from "./pages/register";
-import { selectUser } from "./store/userSlice";
+import Subscribe from "./pages/subscribe";
 
 const ReactRoutes = () => {
     const user = useSelector(selectUser);
@@ -22,6 +24,7 @@ const ReactRoutes = () => {
                     element={user ? <Navigate to="/" /> : <Register />}
                 />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/subscribe/:id" element={<Subscribe />} />
             </Routes>
         </BrowserRouter>
     );

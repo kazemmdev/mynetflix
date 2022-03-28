@@ -1833,6 +1833,878 @@ function createListenerMiddleware(middlewareOptions) {
 
 /***/ }),
 
+/***/ "./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js":
+/*!***********************************************************************!*\
+  !*** ./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js ***!
+  \***********************************************************************/
+/***/ (function(__unused_webpack_module, exports, __webpack_require__) {
+
+(function (global, factory) {
+	 true ? factory(exports, __webpack_require__(/*! react */ "./node_modules/react/index.js")) :
+	0;
+}(this, (function (exports, React) { 'use strict';
+
+	React = React && Object.prototype.hasOwnProperty.call(React, 'default') ? React['default'] : React;
+
+	function createCommonjsModule(fn, module) {
+		return module = { exports: {} }, fn(module, module.exports), module.exports;
+	}
+
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+
+	var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
+	var ReactPropTypesSecret_1 = ReactPropTypesSecret;
+
+	function emptyFunction() {}
+
+	function emptyFunctionWithReset() {}
+
+	emptyFunctionWithReset.resetWarningCache = emptyFunction;
+
+	var factoryWithThrowingShims = function () {
+	  function shim(props, propName, componentName, location, propFullName, secret) {
+	    if (secret === ReactPropTypesSecret_1) {
+	      // It is still safe when called from React.
+	      return;
+	    }
+
+	    var err = new Error('Calling PropTypes validators directly is not supported by the `prop-types` package. ' + 'Use PropTypes.checkPropTypes() to call them. ' + 'Read more at http://fb.me/use-check-prop-types');
+	    err.name = 'Invariant Violation';
+	    throw err;
+	  }
+	  shim.isRequired = shim;
+
+	  function getShim() {
+	    return shim;
+	  }
+	  // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
+
+	  var ReactPropTypes = {
+	    array: shim,
+	    bool: shim,
+	    func: shim,
+	    number: shim,
+	    object: shim,
+	    string: shim,
+	    symbol: shim,
+	    any: shim,
+	    arrayOf: getShim,
+	    element: shim,
+	    elementType: shim,
+	    instanceOf: getShim,
+	    node: shim,
+	    objectOf: getShim,
+	    oneOf: getShim,
+	    oneOfType: getShim,
+	    shape: getShim,
+	    exact: getShim,
+	    checkPropTypes: emptyFunctionWithReset,
+	    resetWarningCache: emptyFunction
+	  };
+	  ReactPropTypes.PropTypes = ReactPropTypes;
+	  return ReactPropTypes;
+	};
+
+	var propTypes = createCommonjsModule(function (module) {
+	/**
+	 * Copyright (c) 2013-present, Facebook, Inc.
+	 *
+	 * This source code is licensed under the MIT license found in the
+	 * LICENSE file in the root directory of this source tree.
+	 */
+	{
+	  // By explicitly using `prop-types` you are opting into new production behavior.
+	  // http://fb.me/prop-types-in-prod
+	  module.exports = factoryWithThrowingShims();
+	}
+	});
+
+	function _typeof(obj) {
+	  "@babel/helpers - typeof";
+
+	  if (typeof Symbol === "function" && typeof Symbol.iterator === "symbol") {
+	    _typeof = function (obj) {
+	      return typeof obj;
+	    };
+	  } else {
+	    _typeof = function (obj) {
+	      return obj && typeof Symbol === "function" && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj;
+	    };
+	  }
+
+	  return _typeof(obj);
+	}
+
+	function _defineProperty(obj, key, value) {
+	  if (key in obj) {
+	    Object.defineProperty(obj, key, {
+	      value: value,
+	      enumerable: true,
+	      configurable: true,
+	      writable: true
+	    });
+	  } else {
+	    obj[key] = value;
+	  }
+
+	  return obj;
+	}
+
+	function ownKeys(object, enumerableOnly) {
+	  var keys = Object.keys(object);
+
+	  if (Object.getOwnPropertySymbols) {
+	    var symbols = Object.getOwnPropertySymbols(object);
+	    if (enumerableOnly) symbols = symbols.filter(function (sym) {
+	      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+	    });
+	    keys.push.apply(keys, symbols);
+	  }
+
+	  return keys;
+	}
+
+	function _objectSpread2(target) {
+	  for (var i = 1; i < arguments.length; i++) {
+	    var source = arguments[i] != null ? arguments[i] : {};
+
+	    if (i % 2) {
+	      ownKeys(Object(source), true).forEach(function (key) {
+	        _defineProperty(target, key, source[key]);
+	      });
+	    } else if (Object.getOwnPropertyDescriptors) {
+	      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
+	    } else {
+	      ownKeys(Object(source)).forEach(function (key) {
+	        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+	      });
+	    }
+	  }
+
+	  return target;
+	}
+
+	function _slicedToArray(arr, i) {
+	  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
+	}
+
+	function _arrayWithHoles(arr) {
+	  if (Array.isArray(arr)) return arr;
+	}
+
+	function _iterableToArrayLimit(arr, i) {
+	  if (typeof Symbol === "undefined" || !(Symbol.iterator in Object(arr))) return;
+	  var _arr = [];
+	  var _n = true;
+	  var _d = false;
+	  var _e = undefined;
+
+	  try {
+	    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
+	      _arr.push(_s.value);
+
+	      if (i && _arr.length === i) break;
+	    }
+	  } catch (err) {
+	    _d = true;
+	    _e = err;
+	  } finally {
+	    try {
+	      if (!_n && _i["return"] != null) _i["return"]();
+	    } finally {
+	      if (_d) throw _e;
+	    }
+	  }
+
+	  return _arr;
+	}
+
+	function _unsupportedIterableToArray(o, minLen) {
+	  if (!o) return;
+	  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+	  var n = Object.prototype.toString.call(o).slice(8, -1);
+	  if (n === "Object" && o.constructor) n = o.constructor.name;
+	  if (n === "Map" || n === "Set") return Array.from(o);
+	  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
+	}
+
+	function _arrayLikeToArray(arr, len) {
+	  if (len == null || len > arr.length) len = arr.length;
+
+	  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+
+	  return arr2;
+	}
+
+	function _nonIterableRest() {
+	  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
+	}
+
+	var usePrevious = function usePrevious(value) {
+	  var ref = React.useRef(value);
+	  React.useEffect(function () {
+	    ref.current = value;
+	  }, [value]);
+	  return ref.current;
+	};
+
+	var isUnknownObject = function isUnknownObject(raw) {
+	  return raw !== null && _typeof(raw) === 'object';
+	};
+	var isPromise = function isPromise(raw) {
+	  return isUnknownObject(raw) && typeof raw.then === 'function';
+	}; // We are using types to enforce the `stripe` prop in this lib,
+	// but in an untyped integration `stripe` could be anything, so we need
+	// to do some sanity validation to prevent type errors.
+
+	var isStripe = function isStripe(raw) {
+	  return isUnknownObject(raw) && typeof raw.elements === 'function' && typeof raw.createToken === 'function' && typeof raw.createPaymentMethod === 'function' && typeof raw.confirmCardPayment === 'function';
+	};
+
+	var PLAIN_OBJECT_STR = '[object Object]';
+	var isEqual = function isEqual(left, right) {
+	  if (!isUnknownObject(left) || !isUnknownObject(right)) {
+	    return left === right;
+	  }
+
+	  var leftArray = Array.isArray(left);
+	  var rightArray = Array.isArray(right);
+	  if (leftArray !== rightArray) return false;
+	  var leftPlainObject = Object.prototype.toString.call(left) === PLAIN_OBJECT_STR;
+	  var rightPlainObject = Object.prototype.toString.call(right) === PLAIN_OBJECT_STR;
+	  if (leftPlainObject !== rightPlainObject) return false; // not sure what sort of special object this is (regexp is one option), so
+	  // fallback to reference check.
+
+	  if (!leftPlainObject && !leftArray) return left === right;
+	  var leftKeys = Object.keys(left);
+	  var rightKeys = Object.keys(right);
+	  if (leftKeys.length !== rightKeys.length) return false;
+	  var keySet = {};
+
+	  for (var i = 0; i < leftKeys.length; i += 1) {
+	    keySet[leftKeys[i]] = true;
+	  }
+
+	  for (var _i = 0; _i < rightKeys.length; _i += 1) {
+	    keySet[rightKeys[_i]] = true;
+	  }
+
+	  var allKeys = Object.keys(keySet);
+
+	  if (allKeys.length !== leftKeys.length) {
+	    return false;
+	  }
+
+	  var l = left;
+	  var r = right;
+
+	  var pred = function pred(key) {
+	    return isEqual(l[key], r[key]);
+	  };
+
+	  return allKeys.every(pred);
+	};
+
+	var extractAllowedOptionsUpdates = function extractAllowedOptionsUpdates(options, prevOptions, immutableKeys) {
+	  if (!isUnknownObject(options)) {
+	    return null;
+	  }
+
+	  return Object.keys(options).reduce(function (newOptions, key) {
+	    var isUpdated = !isUnknownObject(prevOptions) || !isEqual(options[key], prevOptions[key]);
+
+	    if (immutableKeys.includes(key)) {
+	      if (isUpdated) {
+	        console.warn("Unsupported prop change: options.".concat(key, " is not a mutable property."));
+	      }
+
+	      return newOptions;
+	    }
+
+	    if (!isUpdated) {
+	      return newOptions;
+	    }
+
+	    return _objectSpread2(_objectSpread2({}, newOptions || {}), {}, _defineProperty({}, key, options[key]));
+	  }, null);
+	};
+
+	var INVALID_STRIPE_ERROR = 'Invalid prop `stripe` supplied to `Elements`. We recommend using the `loadStripe` utility from `@stripe/stripe-js`. See https://stripe.com/docs/stripe-js/react#elements-props-stripe for details.'; // We are using types to enforce the `stripe` prop in this lib, but in a real
+	// integration `stripe` could be anything, so we need to do some sanity
+	// validation to prevent type errors.
+
+	var validateStripe = function validateStripe(maybeStripe) {
+	  if (maybeStripe === null || isStripe(maybeStripe)) {
+	    return maybeStripe;
+	  }
+
+	  throw new Error(INVALID_STRIPE_ERROR);
+	};
+
+	var parseStripeProp = function parseStripeProp(raw) {
+	  if (isPromise(raw)) {
+	    return {
+	      tag: 'async',
+	      stripePromise: Promise.resolve(raw).then(validateStripe)
+	    };
+	  }
+
+	  var stripe = validateStripe(raw);
+
+	  if (stripe === null) {
+	    return {
+	      tag: 'empty'
+	    };
+	  }
+
+	  return {
+	    tag: 'sync',
+	    stripe: stripe
+	  };
+	};
+
+	var ElementsContext = /*#__PURE__*/React.createContext(null);
+	ElementsContext.displayName = 'ElementsContext';
+	var parseElementsContext = function parseElementsContext(ctx, useCase) {
+	  if (!ctx) {
+	    throw new Error("Could not find Elements context; You need to wrap the part of your app that ".concat(useCase, " in an <Elements> provider."));
+	  }
+
+	  return ctx;
+	};
+	/**
+	 * The `Elements` provider allows you to use [Element components](https://stripe.com/docs/stripe-js/react#element-components) and access the [Stripe object](https://stripe.com/docs/js/initializing) in any nested component.
+	 * Render an `Elements` provider at the root of your React app so that it is available everywhere you need it.
+	 *
+	 * To use the `Elements` provider, call `loadStripe` from `@stripe/stripe-js` with your publishable key.
+	 * The `loadStripe` function will asynchronously load the Stripe.js script and initialize a `Stripe` object.
+	 * Pass the returned `Promise` to `Elements`.
+	 *
+	 * @docs https://stripe.com/docs/stripe-js/react#elements-provider
+	 */
+
+	var Elements = function Elements(_ref) {
+	  var rawStripeProp = _ref.stripe,
+	      options = _ref.options,
+	      children = _ref.children;
+
+	  var _final = React.useRef(false);
+
+	  var isMounted = React.useRef(true);
+	  var parsed = React.useMemo(function () {
+	    return parseStripeProp(rawStripeProp);
+	  }, [rawStripeProp]);
+
+	  var _React$useState = React.useState(function () {
+	    return {
+	      stripe: null,
+	      elements: null
+	    };
+	  }),
+	      _React$useState2 = _slicedToArray(_React$useState, 2),
+	      ctx = _React$useState2[0],
+	      setContext = _React$useState2[1];
+
+	  var prevStripe = usePrevious(rawStripeProp);
+
+	  if (prevStripe !== null) {
+	    if (prevStripe !== rawStripeProp) {
+	      console.warn('Unsupported prop change on Elements: You cannot change the `stripe` prop after setting it.');
+	    }
+	  }
+
+	  if (!_final.current) {
+	    if (parsed.tag === 'sync') {
+	      _final.current = true;
+	      setContext({
+	        stripe: parsed.stripe,
+	        elements: parsed.stripe.elements(options)
+	      });
+	    }
+
+	    if (parsed.tag === 'async') {
+	      _final.current = true;
+	      parsed.stripePromise.then(function (stripe) {
+	        if (stripe && isMounted.current) {
+	          // Only update Elements context if the component is still mounted
+	          // and stripe is not null. We allow stripe to be null to make
+	          // handling SSR easier.
+	          setContext({
+	            stripe: stripe,
+	            elements: stripe.elements(options)
+	          });
+	        }
+	      });
+	    }
+	  }
+
+	  var prevOptions = usePrevious(options);
+	  React.useEffect(function () {
+	    if (!ctx.elements) {
+	      return;
+	    }
+
+	    var updates = extractAllowedOptionsUpdates(options, prevOptions, ['clientSecret', 'fonts']);
+
+	    if (updates) {
+	      ctx.elements.update(updates);
+	    }
+	  }, [options, prevOptions, ctx.elements]);
+	  React.useEffect(function () {
+	    return function () {
+	      isMounted.current = false;
+	    };
+	  }, []);
+	  React.useEffect(function () {
+	    var anyStripe = ctx.stripe;
+
+	    if (!anyStripe || !anyStripe._registerWrapper || !anyStripe.registerAppInfo) {
+	      return;
+	    }
+
+	    anyStripe._registerWrapper({
+	      name: 'react-stripe-js',
+	      version: "1.7.0"
+	    });
+
+	    anyStripe.registerAppInfo({
+	      name: 'react-stripe-js',
+	      version: "1.7.0",
+	      url: 'https://stripe.com/docs/stripe-js/react'
+	    });
+	  }, [ctx.stripe]);
+	  return /*#__PURE__*/React.createElement(ElementsContext.Provider, {
+	    value: ctx
+	  }, children);
+	};
+	Elements.propTypes = {
+	  stripe: propTypes.any,
+	  options: propTypes.object
+	};
+	var useElementsContextWithUseCase = function useElementsContextWithUseCase(useCaseMessage) {
+	  var ctx = React.useContext(ElementsContext);
+	  return parseElementsContext(ctx, useCaseMessage);
+	};
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#useelements-hook
+	 */
+
+	var useElements = function useElements() {
+	  var _useElementsContextWi = useElementsContextWithUseCase('calls useElements()'),
+	      elements = _useElementsContextWi.elements;
+
+	  return elements;
+	};
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#usestripe-hook
+	 */
+
+	var useStripe = function useStripe() {
+	  var _useElementsContextWi2 = useElementsContextWithUseCase('calls useStripe()'),
+	      stripe = _useElementsContextWi2.stripe;
+
+	  return stripe;
+	};
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#elements-consumer
+	 */
+
+	var ElementsConsumer = function ElementsConsumer(_ref2) {
+	  var children = _ref2.children;
+	  var ctx = useElementsContextWithUseCase('mounts <ElementsConsumer>'); // Assert to satisfy the busted React.FC return type (it should be ReactNode)
+
+	  return children(ctx);
+	};
+	ElementsConsumer.propTypes = {
+	  children: propTypes.func.isRequired
+	};
+
+	var useCallbackReference = function useCallbackReference(cb) {
+	  var ref = React.useRef(cb);
+	  React.useEffect(function () {
+	    ref.current = cb;
+	  }, [cb]);
+	  return function () {
+	    if (ref.current) {
+	      ref.current.apply(ref, arguments);
+	    }
+	  };
+	};
+
+	var noop = function noop() {};
+
+	var capitalized = function capitalized(str) {
+	  return str.charAt(0).toUpperCase() + str.slice(1);
+	};
+
+	var createElementComponent = function createElementComponent(type, isServer) {
+	  var displayName = "".concat(capitalized(type), "Element");
+
+	  var ClientElement = function ClientElement(_ref) {
+	    var id = _ref.id,
+	        className = _ref.className,
+	        _ref$options = _ref.options,
+	        options = _ref$options === void 0 ? {} : _ref$options,
+	        _ref$onBlur = _ref.onBlur,
+	        onBlur = _ref$onBlur === void 0 ? noop : _ref$onBlur,
+	        _ref$onFocus = _ref.onFocus,
+	        onFocus = _ref$onFocus === void 0 ? noop : _ref$onFocus,
+	        _ref$onReady = _ref.onReady,
+	        onReady = _ref$onReady === void 0 ? noop : _ref$onReady,
+	        _ref$onChange = _ref.onChange,
+	        onChange = _ref$onChange === void 0 ? noop : _ref$onChange,
+	        _ref$onEscape = _ref.onEscape,
+	        onEscape = _ref$onEscape === void 0 ? noop : _ref$onEscape,
+	        _ref$onClick = _ref.onClick,
+	        onClick = _ref$onClick === void 0 ? noop : _ref$onClick;
+
+	    var _useElementsContextWi = useElementsContextWithUseCase("mounts <".concat(displayName, ">")),
+	        elements = _useElementsContextWi.elements;
+
+	    var elementRef = React.useRef(null);
+	    var domNode = React.useRef(null);
+	    var callOnReady = useCallbackReference(onReady);
+	    var callOnBlur = useCallbackReference(onBlur);
+	    var callOnFocus = useCallbackReference(onFocus);
+	    var callOnClick = useCallbackReference(onClick);
+	    var callOnChange = useCallbackReference(onChange);
+	    var callOnEscape = useCallbackReference(onEscape);
+	    React.useLayoutEffect(function () {
+	      if (elementRef.current == null && elements && domNode.current != null) {
+	        var element = elements.create(type, options);
+	        elementRef.current = element;
+	        element.mount(domNode.current);
+	        element.on('ready', function () {
+	          return callOnReady(element);
+	        });
+	        element.on('change', callOnChange);
+	        element.on('blur', callOnBlur);
+	        element.on('focus', callOnFocus);
+	        element.on('escape', callOnEscape); // Users can pass an an onClick prop on any Element component
+	        // just as they could listen for the `click` event on any Element,
+	        // but only the PaymentRequestButton will actually trigger the event.
+
+	        element.on('click', callOnClick);
+	      }
+	    });
+	    var prevOptions = usePrevious(options);
+	    React.useEffect(function () {
+	      if (!elementRef.current) {
+	        return;
+	      }
+
+	      var updates = extractAllowedOptionsUpdates(options, prevOptions, ['paymentRequest']);
+
+	      if (updates) {
+	        elementRef.current.update(updates);
+	      }
+	    }, [options, prevOptions]);
+	    React.useLayoutEffect(function () {
+	      return function () {
+	        if (elementRef.current) {
+	          elementRef.current.destroy();
+	        }
+	      };
+	    }, []);
+	    return /*#__PURE__*/React.createElement("div", {
+	      id: id,
+	      className: className,
+	      ref: domNode
+	    });
+	  }; // Only render the Element wrapper in a server environment.
+
+
+	  var ServerElement = function ServerElement(props) {
+	    // Validate that we are in the right context by calling useElementsContextWithUseCase.
+	    useElementsContextWithUseCase("mounts <".concat(displayName, ">"));
+	    var id = props.id,
+	        className = props.className;
+	    return /*#__PURE__*/React.createElement("div", {
+	      id: id,
+	      className: className
+	    });
+	  };
+
+	  var Element = isServer ? ServerElement : ClientElement;
+	  Element.propTypes = {
+	    id: propTypes.string,
+	    className: propTypes.string,
+	    onChange: propTypes.func,
+	    onBlur: propTypes.func,
+	    onFocus: propTypes.func,
+	    onReady: propTypes.func,
+	    onClick: propTypes.func,
+	    options: propTypes.object
+	  };
+	  Element.displayName = displayName;
+	  Element.__elementType = type;
+	  return Element;
+	};
+
+	var isServer = typeof window === 'undefined';
+	/**
+	 * Requires beta access:
+	 * Contact [Stripe support](https://support.stripe.com/) for more information.
+	 *
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var AuBankAccountElement = createElementComponent('auBankAccount', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var CardElement = createElementComponent('card', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var CardNumberElement = createElementComponent('cardNumber', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var CardExpiryElement = createElementComponent('cardExpiry', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var CardCvcElement = createElementComponent('cardCvc', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var FpxBankElement = createElementComponent('fpxBank', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var IbanElement = createElementComponent('iban', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var IdealBankElement = createElementComponent('idealBank', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var P24BankElement = createElementComponent('p24Bank', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var EpsBankElement = createElementComponent('epsBank', isServer);
+	var PaymentElement = createElementComponent('payment', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var PaymentRequestButtonElement = createElementComponent('paymentRequestButton', isServer);
+	/**
+	 * Requires beta access:
+	 * Contact [Stripe support](https://support.stripe.com/) for more information.
+	 *
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var LinkAuthenticationElement = createElementComponent('linkAuthentication', isServer);
+	/**
+	 * Requires beta access:
+	 * Contact [Stripe support](https://support.stripe.com/) for more information.
+	 *
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var ShippingAddressElement = createElementComponent('shippingAddress', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var AffirmMessageElement = createElementComponent('affirmMessage', isServer);
+	/**
+	 * @docs https://stripe.com/docs/stripe-js/react#element-components
+	 */
+
+	var AfterpayClearpayMessageElement = createElementComponent('afterpayClearpayMessage', isServer);
+
+	exports.AffirmMessageElement = AffirmMessageElement;
+	exports.AfterpayClearpayMessageElement = AfterpayClearpayMessageElement;
+	exports.AuBankAccountElement = AuBankAccountElement;
+	exports.CardCvcElement = CardCvcElement;
+	exports.CardElement = CardElement;
+	exports.CardExpiryElement = CardExpiryElement;
+	exports.CardNumberElement = CardNumberElement;
+	exports.Elements = Elements;
+	exports.ElementsConsumer = ElementsConsumer;
+	exports.EpsBankElement = EpsBankElement;
+	exports.FpxBankElement = FpxBankElement;
+	exports.IbanElement = IbanElement;
+	exports.IdealBankElement = IdealBankElement;
+	exports.LinkAuthenticationElement = LinkAuthenticationElement;
+	exports.P24BankElement = P24BankElement;
+	exports.PaymentElement = PaymentElement;
+	exports.PaymentRequestButtonElement = PaymentRequestButtonElement;
+	exports.ShippingAddressElement = ShippingAddressElement;
+	exports.useElements = useElements;
+	exports.useStripe = useStripe;
+
+	Object.defineProperty(exports, '__esModule', { value: true });
+
+})));
+
+
+/***/ }),
+
+/***/ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js":
+/*!***********************************************************!*\
+  !*** ./node_modules/@stripe/stripe-js/dist/stripe.esm.js ***!
+  \***********************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "loadStripe": () => (/* binding */ loadStripe)
+/* harmony export */ });
+var V3_URL = 'https://js.stripe.com/v3';
+var V3_URL_REGEX = /^https:\/\/js\.stripe\.com\/v3\/?(\?.*)?$/;
+var EXISTING_SCRIPT_MESSAGE = 'loadStripe.setLoadParameters was called but an existing Stripe.js script already exists in the document; existing script parameters will be used';
+var findScript = function findScript() {
+  var scripts = document.querySelectorAll("script[src^=\"".concat(V3_URL, "\"]"));
+
+  for (var i = 0; i < scripts.length; i++) {
+    var script = scripts[i];
+
+    if (!V3_URL_REGEX.test(script.src)) {
+      continue;
+    }
+
+    return script;
+  }
+
+  return null;
+};
+
+var injectScript = function injectScript(params) {
+  var queryString = params && !params.advancedFraudSignals ? '?advancedFraudSignals=false' : '';
+  var script = document.createElement('script');
+  script.src = "".concat(V3_URL).concat(queryString);
+  var headOrBody = document.head || document.body;
+
+  if (!headOrBody) {
+    throw new Error('Expected document.body not to be null. Stripe.js requires a <body> element.');
+  }
+
+  headOrBody.appendChild(script);
+  return script;
+};
+
+var registerWrapper = function registerWrapper(stripe, startTime) {
+  if (!stripe || !stripe._registerWrapper) {
+    return;
+  }
+
+  stripe._registerWrapper({
+    name: 'stripe-js',
+    version: "1.25.0",
+    startTime: startTime
+  });
+};
+
+var stripePromise = null;
+var loadScript = function loadScript(params) {
+  // Ensure that we only attempt to load Stripe.js at most once
+  if (stripePromise !== null) {
+    return stripePromise;
+  }
+
+  stripePromise = new Promise(function (resolve, reject) {
+    if (typeof window === 'undefined') {
+      // Resolve to null when imported server side. This makes the module
+      // safe to import in an isomorphic code base.
+      resolve(null);
+      return;
+    }
+
+    if (window.Stripe && params) {
+      console.warn(EXISTING_SCRIPT_MESSAGE);
+    }
+
+    if (window.Stripe) {
+      resolve(window.Stripe);
+      return;
+    }
+
+    try {
+      var script = findScript();
+
+      if (script && params) {
+        console.warn(EXISTING_SCRIPT_MESSAGE);
+      } else if (!script) {
+        script = injectScript(params);
+      }
+
+      script.addEventListener('load', function () {
+        if (window.Stripe) {
+          resolve(window.Stripe);
+        } else {
+          reject(new Error('Stripe.js not available'));
+        }
+      });
+      script.addEventListener('error', function () {
+        reject(new Error('Failed to load Stripe.js'));
+      });
+    } catch (error) {
+      reject(error);
+      return;
+    }
+  });
+  return stripePromise;
+};
+var initStripe = function initStripe(maybeStripe, args, startTime) {
+  if (maybeStripe === null) {
+    return null;
+  }
+
+  var stripe = maybeStripe.apply(undefined, args);
+  registerWrapper(stripe, startTime);
+  return stripe;
+};
+
+// own script injection.
+
+var stripePromise$1 = Promise.resolve().then(function () {
+  return loadScript(null);
+});
+var loadCalled = false;
+stripePromise$1["catch"](function (err) {
+  if (!loadCalled) {
+    console.warn(err);
+  }
+});
+var loadStripe = function loadStripe() {
+  for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  loadCalled = true;
+  var startTime = Date.now();
+  return stripePromise$1.then(function (maybeStripe) {
+    return initStripe(maybeStripe, args, startTime);
+  });
+};
+
+
+
+
+/***/ }),
+
 /***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
@@ -3962,14 +4834,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
-/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
-/* harmony import */ var _pages_home__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./pages/home */ "./resources/js/pages/home.jsx");
-/* harmony import */ var _pages_login__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/login */ "./resources/js/pages/login.jsx");
-/* harmony import */ var _pages_profile__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/profile */ "./resources/js/pages/profile.jsx");
-/* harmony import */ var _pages_register__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/register */ "./resources/js/pages/register.jsx");
-/* harmony import */ var _store_userSlice__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./store/userSlice */ "./resources/js/store/userSlice.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var _store_userSlice__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./store/userSlice */ "./resources/js/store/userSlice.js");
+/* harmony import */ var _pages_home__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./pages/home */ "./resources/js/pages/home.jsx");
+/* harmony import */ var _pages_login__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/login */ "./resources/js/pages/login.jsx");
+/* harmony import */ var _pages_profile__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/profile */ "./resources/js/pages/profile.jsx");
+/* harmony import */ var _pages_register__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/register */ "./resources/js/pages/register.jsx");
+/* harmony import */ var _pages_subscribe__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./pages/subscribe */ "./resources/js/pages/subscribe.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
 
 
 
@@ -3981,25 +4855,28 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var ReactRoutes = function ReactRoutes() {
-  var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(_store_userSlice__WEBPACK_IMPORTED_MODULE_5__.selectUser);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.BrowserRouter, {
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Routes, {
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+  var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_0__.useSelector)(_store_userSlice__WEBPACK_IMPORTED_MODULE_1__.selectUser);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.BrowserRouter, {
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxs)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Routes, {
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
         path: "/",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_home__WEBPACK_IMPORTED_MODULE_1__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_home__WEBPACK_IMPORTED_MODULE_2__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
         path: "/login",
-        element: user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Navigate, {
+        element: user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Navigate, {
           to: "/"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_login__WEBPACK_IMPORTED_MODULE_2__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_login__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
         path: "/register",
-        element: user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Navigate, {
+        element: user ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Navigate, {
           to: "/"
-        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_register__WEBPACK_IMPORTED_MODULE_4__["default"], {})
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_8__.Route, {
+        }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_register__WEBPACK_IMPORTED_MODULE_5__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
         path: "/profile",
-        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_pages_profile__WEBPACK_IMPORTED_MODULE_3__["default"], {})
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_profile__WEBPACK_IMPORTED_MODULE_4__["default"], {})
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_9__.Route, {
+        path: "/subscribe/:id",
+        element: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_7__.jsx)(_pages_subscribe__WEBPACK_IMPORTED_MODULE_6__["default"], {})
       })]
     })
   });
@@ -4142,6 +5019,212 @@ var Banner = function Banner() {
 };
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Banner);
+
+/***/ }),
+
+/***/ "./resources/js/components/checkoutForm.jsx":
+/*!**************************************************!*\
+  !*** ./resources/js/components/checkoutForm.jsx ***!
+  \**************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @stripe/react-stripe-js */ "./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js");
+/* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var _services_subscriptionService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/subscriptionService */ "./resources/js/services/subscriptionService.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+var CheckoutForm = function CheckoutForm(_ref) {
+  var plan = _ref.plan;
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      succeeded = _useState2[0],
+      setSucceeded = _useState2[1];
+
+  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(null),
+      _useState4 = _slicedToArray(_useState3, 2),
+      error = _useState4[0],
+      setError = _useState4[1];
+
+  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState6 = _slicedToArray(_useState5, 2),
+      processing = _useState6[0],
+      setProcessing = _useState6[1];
+
+  var _useState7 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(true),
+      _useState8 = _slicedToArray(_useState7, 2),
+      disabled = _useState8[0],
+      setDisabled = _useState8[1];
+
+  var _useState9 = (0,react__WEBPACK_IMPORTED_MODULE_1__.useState)(""),
+      _useState10 = _slicedToArray(_useState9, 2),
+      clientSecret = _useState10[0],
+      setClientSecret = _useState10[1];
+
+  var stripe = (0,_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.useStripe)();
+  var elements = (0,_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.useElements)();
+  (0,react__WEBPACK_IMPORTED_MODULE_1__.useEffect)(function () {
+    (0,_services_subscriptionService__WEBPACK_IMPORTED_MODULE_3__.getSecretKey)().then(function (response) {
+      setClientSecret(response.data.clientSecret);
+    });
+  }, []);
+  var cardStyle = {
+    style: {
+      base: {
+        color: "#32325d",
+        fontFamily: "Arial, sans-serif",
+        fontSmoothing: "antialiased",
+        fontSize: "16px",
+        "::placeholder": {
+          color: "#32325d"
+        }
+      },
+      invalid: {
+        fontFamily: "Arial, sans-serif",
+        color: "#fa755a",
+        iconColor: "#fa755a"
+      }
+    }
+  };
+
+  var handleChange = /*#__PURE__*/function () {
+    var _ref2 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee(event) {
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+        while (1) {
+          switch (_context.prev = _context.next) {
+            case 0:
+              setDisabled(event.empty);
+              setError(event.error ? event.error.message : "");
+
+            case 2:
+            case "end":
+              return _context.stop();
+          }
+        }
+      }, _callee);
+    }));
+
+    return function handleChange(_x) {
+      return _ref2.apply(this, arguments);
+    };
+  }();
+
+  var handleSubmit = /*#__PURE__*/function () {
+    var _ref3 = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee2(ev) {
+      var payload;
+      return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee2$(_context2) {
+        while (1) {
+          switch (_context2.prev = _context2.next) {
+            case 0:
+              ev.preventDefault();
+              setProcessing(true);
+              _context2.next = 4;
+              return stripe.confirmCardPayment(clientSecret, {
+                payment_method: {
+                  card: elements.getElement(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.CardElement)
+                }
+              });
+
+            case 4:
+              payload = _context2.sent;
+
+              if (!payload.error) {
+                _context2.next = 10;
+                break;
+              }
+
+              setError("Payment failed ".concat(payload.error.message));
+              setProcessing(false);
+              _context2.next = 15;
+              break;
+
+            case 10:
+              setError(null);
+              setProcessing(false);
+              setSucceeded(true);
+              _context2.next = 15;
+              return (0,_services_subscriptionService__WEBPACK_IMPORTED_MODULE_3__.confirm)(payload.paymentIntent.id, plan.id).then(function () {
+                window.location.replace("/profile");
+              });
+
+            case 15:
+            case "end":
+              return _context2.stop();
+          }
+        }
+      }, _callee2);
+    }));
+
+    return function handleSubmit(_x2) {
+      return _ref3.apply(this, arguments);
+    };
+  }();
+
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
+    id: "payment-form",
+    onSubmit: handleSubmit,
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_2__.CardElement, {
+      className: "bg-white py-4 px-2 rounded-md ",
+      id: "card-element",
+      options: cardStyle,
+      onChange: handleChange
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
+      className: "flex space-x-2",
+      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
+        disabled: processing || disabled || succeeded,
+        id: "submit",
+        className: "w-full bg-red-600 text-white text-center py-4 my-4 rounded-md cursor-pointer hover:bg-red-500 active:bg-red-700",
+        children: processing ? "Submitting..." : "Pay now"
+      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_5__.Link, {
+        to: "/profile",
+        className: "w-full bg-gray-600 text-white text-center py-4 my-4 rounded-md cursor-pointer hover:bg-gray-500 active:bg-gray-700",
+        children: "Cancel"
+      })]
+    }), error && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
+      className: "text-red-600",
+      role: "alert",
+      children: error
+    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
+      className: succeeded ? "text-gray-200" : "hidden",
+      children: "Payment succeeded"
+    })]
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (CheckoutForm);
 
 /***/ }),
 
@@ -4860,10 +5943,36 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _components_navbar__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/navbar */ "./resources/js/components/navbar.jsx");
-/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
-/* harmony import */ var _store_userSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../store/userSlice */ "./resources/js/store/userSlice.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @babel/runtime/regenerator */ "./node_modules/@babel/runtime/regenerator/index.js");
+/* harmony import */ var _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _components_navbar__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../components/navbar */ "./resources/js/components/navbar.jsx");
+/* harmony import */ var react_redux__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-redux */ "./node_modules/react-redux/es/index.js");
+/* harmony import */ var _store_userSlice__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../store/userSlice */ "./resources/js/store/userSlice.js");
+/* harmony import */ var _services_subscriptionService__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../services/subscriptionService */ "./resources/js/services/subscriptionService.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/index.js");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+
+
+function asyncGeneratorStep(gen, resolve, reject, _next, _throw, key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { Promise.resolve(value).then(_next, _throw); } }
+
+function _asyncToGenerator(fn) { return function () { var self = this, args = arguments; return new Promise(function (resolve, reject) { var gen = fn.apply(self, args); function _next(value) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "next", value); } function _throw(err) { asyncGeneratorStep(gen, resolve, reject, _next, _throw, "throw", err); } _next(undefined); }); }; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
 
 
 
@@ -4871,92 +5980,105 @@ __webpack_require__.r(__webpack_exports__);
 
 
 var Profile = function Profile() {
-  var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_1__.useSelector)(_store_userSlice__WEBPACK_IMPORTED_MODULE_2__.selectUser);
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+  var user = (0,react_redux__WEBPACK_IMPORTED_MODULE_2__.useSelector)(_store_userSlice__WEBPACK_IMPORTED_MODULE_3__.selectUser);
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_5__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      plans = _useState2[0],
+      setPlans = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_5__.useEffect)(function () {
+    var fetchData = /*#__PURE__*/function () {
+      var _ref = _asyncToGenerator( /*#__PURE__*/_babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().mark(function _callee() {
+        var response;
+        return _babel_runtime_regenerator__WEBPACK_IMPORTED_MODULE_0___default().wrap(function _callee$(_context) {
+          while (1) {
+            switch (_context.prev = _context.next) {
+              case 0:
+                _context.next = 2;
+                return (0,_services_subscriptionService__WEBPACK_IMPORTED_MODULE_4__.getPlans)();
+
+              case 2:
+                response = _context.sent;
+                setPlans(response.data);
+
+              case 4:
+              case "end":
+                return _context.stop();
+            }
+          }
+        }, _callee);
+      }));
+
+      return function fetchData() {
+        return _ref.apply(this, arguments);
+      };
+    }();
+
+    fetchData();
+  }, []);
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
     className: "w-full",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_components_navbar__WEBPACK_IMPORTED_MODULE_0__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_navbar__WEBPACK_IMPORTED_MODULE_1__["default"], {}), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
       className: "mx-auto -mt-20",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
         className: "bg-slate-900 pt-10 w-full h-screen",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
           className: "w-full max-w-2xl mx-auto my-16 p-12",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
               className: "text-4xl text-white pb-2 border-b border-gray-500",
               children: "Edit Profile"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
               className: "flex pt-5",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("img", {
                 className: "w-16 h-16 rounded-md",
                 src: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
                 alt: "avatar"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
                 className: "pl-5",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                   className: "text-white text-2xl",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
                     children: user === null || user === void 0 ? void 0 : user.payload.name
                   })
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
                   className: "text-gray-400 text-xl",
-                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h3", {
                     children: user === null || user === void 0 ? void 0 : user.payload.email
                   })
                 })]
               })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
               className: "text-3xl text-white pb-2 pt-10 border-b border-gray-500",
               children: "Plans"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "my-5 flex items-center",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                className: "flex-1",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
-                  className: "text-sm text-white flex-1",
-                  children: ["Netflix Standard", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-                    className: "text-gray-400 pl-2",
-                    children: "(480p)"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                className: "mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm",
-                children: "Subscribe"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "my-5 flex items-center",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                className: "flex-1",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
-                  className: "text-sm text-white flex-1",
-                  children: ["Netflix Basic", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-                    className: "text-gray-400 pl-2",
-                    children: "(1080p)"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                className: "mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm",
-                children: "Subscribe"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-              className: "my-5 flex items-center",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-                className: "flex-1",
-                children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("p", {
-                  className: "text-sm text-white flex-1",
-                  children: ["Netflix Premium", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-                    className: "text-gray-400 pl-2",
-                    children: "(4k)"
-                  })]
-                })
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                className: "mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm",
-                children: "Subscribe"
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
-                className: "bg-red-600 w-full rounded-md mt-5 py-2 text-white ",
-                children: "Sign out"
-              })
+            }), plans && plans.map(function (item) {
+              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+                className: "my-5 flex items-center",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  className: "flex-1",
+                  children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
+                    className: "text-sm text-white flex-1",
+                    children: [item.display_name, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
+                      className: "text-gray-400 pl-2",
+                      children: ["(", item.quality, ")"]
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("span", {
+                      className: "text-gray-100 pl-2",
+                      children: [item.price, "$ / month"]
+                    })]
+                  })
+                }), user !== null && user !== void 0 && user.payload.subscribed && item.id === (user === null || user === void 0 ? void 0 : user.payload.plan.id) ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+                  className: "mr-a text-white px-2 py-1 text-sm",
+                  children: user === null || user === void 0 ? void 0 : user.payload.plan.expires_at
+                }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(react_router_dom__WEBPACK_IMPORTED_MODULE_7__.Link, {
+                  to: "/subscribe/" + item.id,
+                  className: "mr-a bg-red-600 text-white px-2 py-1 rounded-md text-sm",
+                  children: "Subscribe"
+                })]
+              }, item.id);
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("button", {
+              className: "bg-red-600 w-full rounded-md mt-5 py-2 text-white ",
+              children: "Sign out"
             })]
           })
         })
@@ -5145,6 +6267,99 @@ var Register = function Register() {
 
 /***/ }),
 
+/***/ "./resources/js/pages/subscribe.jsx":
+/*!******************************************!*\
+  !*** ./resources/js/pages/subscribe.jsx ***!
+  \******************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
+/* harmony export */ });
+/* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @stripe/react-stripe-js */ "./node_modules/@stripe/react-stripe-js/dist/react-stripe.umd.js");
+/* harmony import */ var _stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var _stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @stripe/stripe-js */ "./node_modules/@stripe/stripe-js/dist/stripe.esm.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router/index.js");
+/* harmony import */ var _services_subscriptionService__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/subscriptionService */ "./resources/js/services/subscriptionService.js");
+/* harmony import */ var _components_checkoutForm__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../components/checkoutForm */ "./resources/js/components/checkoutForm.jsx");
+/* harmony import */ var _components_spinner__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../components/spinner */ "./resources/js/components/spinner.jsx");
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Symbol !== "undefined" && arr[Symbol.iterator] || arr["@@iterator"]; if (_i == null) return; var _arr = []; var _n = true; var _d = false; var _s, _e; try { for (_i = _i.call(arr); !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+
+
+
+
+
+
+
+
+
+var stripePromise = (0,_stripe_stripe_js__WEBPACK_IMPORTED_MODULE_1__.loadStripe)({"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/d38ca45f_fcf0_47c4_ae42_e21f05d710cc","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.3422","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original","STRIPE_KEY":"pk_test_51KhyCsDzXYnylfPdwYkDjVU5WQhdXLwbV42Nz3F08brMHac3SzQKSFrHFxSfRiDpNvD13FkiXp6H7qXVGHi3LoT900RTLYDGWl","STRIPE_SECRET":"sk_test_51KhyCsDzXYnylfPdYQ7fmkIeoeVj1Qix5rUYaAoyRxB7lnsx511YVo4DRRJpF9plvOsWmrFrHYjWo7KIiRh5b2xF00af4IbXLp"}.STRIPE_KEY);
+
+var Subscribe = function Subscribe() {
+  var params = (0,react_router_dom__WEBPACK_IMPORTED_MODULE_7__.useParams)();
+
+  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_2__.useState)(null),
+      _useState2 = _slicedToArray(_useState, 2),
+      plan = _useState2[0],
+      setPlan = _useState2[1];
+
+  (0,react__WEBPACK_IMPORTED_MODULE_2__.useEffect)(function () {
+    (0,_services_subscriptionService__WEBPACK_IMPORTED_MODULE_3__.getPlan)(params.id).then(function (response) {
+      setPlan(response.data);
+    });
+  }, []);
+  if (!plan) return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_spinner__WEBPACK_IMPORTED_MODULE_5__["default"], {});
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+    className: "w-full",
+    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+      className: "mx-auto",
+      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("div", {
+        className: "bg-slate-900 pt-10 w-full h-screen",
+        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+          className: "w-full max-w-xl mx-auto my-16 p-12",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h1", {
+            className: "text-white py-1 mb-2 font-bold text-xl border-b border-gray-600",
+            children: "Subscribe"
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("div", {
+            className: "flex justify-between items-end text-white my-4 pb-3",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)("h2", {
+              className: "text-2xl",
+              children: plan.display_name
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsxs)("p", {
+              className: "text-2xl font-bold",
+              children: [plan.price, "$"]
+            })]
+          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_stripe_react_stripe_js__WEBPACK_IMPORTED_MODULE_0__.Elements, {
+            stripe: stripePromise,
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_6__.jsx)(_components_checkoutForm__WEBPACK_IMPORTED_MODULE_4__["default"], {
+              plan: plan
+            })
+          })]
+        })
+      })
+    })
+  });
+};
+
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (Subscribe);
+
+/***/ }),
+
 /***/ "./resources/js/services/authService.js":
 /*!**********************************************!*\
   !*** ./resources/js/services/authService.js ***!
@@ -5262,7 +6477,9 @@ function dispatchUser(user) {
   if (user) {
     _store__WEBPACK_IMPORTED_MODULE_1__["default"].dispatch((0,_store_userSlice__WEBPACK_IMPORTED_MODULE_3__.login)({
       name: user.name,
-      email: user.email
+      email: user.email,
+      subscribed: user.subscribed,
+      plan: user.plan
     }));
   }
 }
@@ -5283,7 +6500,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.baseURL) = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/aa24f0ae_c94b_472b_af79_57c77c089e86","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.308","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original"}.APP_API;
+(axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.baseURL) = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/d38ca45f_fcf0_47c4_ae42_e21f05d710cc","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.3422","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original","STRIPE_KEY":"pk_test_51KhyCsDzXYnylfPdwYkDjVU5WQhdXLwbV42Nz3F08brMHac3SzQKSFrHFxSfRiDpNvD13FkiXp6H7qXVGHi3LoT900RTLYDGWl","STRIPE_SECRET":"sk_test_51KhyCsDzXYnylfPdYQ7fmkIeoeVj1Qix5rUYaAoyRxB7lnsx511YVo4DRRJpF9plvOsWmrFrHYjWo7KIiRh5b2xF00af4IbXLp"}.APP_API;
 (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.withCredentials) = true;
 (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.post.Accespt) = "application/json";
 (axios__WEBPACK_IMPORTED_MODULE_0___default().defaults.headers.post["Content-Type"]) = "application/json";
@@ -5319,8 +6536,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_movieConstant__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/movieConstant */ "./resources/js/services/movieConstant.js");
 
 
-var apiUrl = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/aa24f0ae_c94b_472b_af79_57c77c089e86","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.308","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original"}.TMDB_API;
-var imgUrl = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/aa24f0ae_c94b_472b_af79_57c77c089e86","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.308","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original"}.TMDB_IMG;
+var apiUrl = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/d38ca45f_fcf0_47c4_ae42_e21f05d710cc","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.3422","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original","STRIPE_KEY":"pk_test_51KhyCsDzXYnylfPdwYkDjVU5WQhdXLwbV42Nz3F08brMHac3SzQKSFrHFxSfRiDpNvD13FkiXp6H7qXVGHi3LoT900RTLYDGWl","STRIPE_SECRET":"sk_test_51KhyCsDzXYnylfPdYQ7fmkIeoeVj1Qix5rUYaAoyRxB7lnsx511YVo4DRRJpF9plvOsWmrFrHYjWo7KIiRh5b2xF00af4IbXLp"}.TMDB_API;
+var imgUrl = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/d38ca45f_fcf0_47c4_ae42_e21f05d710cc","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.3422","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original","STRIPE_KEY":"pk_test_51KhyCsDzXYnylfPdwYkDjVU5WQhdXLwbV42Nz3F08brMHac3SzQKSFrHFxSfRiDpNvD13FkiXp6H7qXVGHi3LoT900RTLYDGWl","STRIPE_SECRET":"sk_test_51KhyCsDzXYnylfPdYQ7fmkIeoeVj1Qix5rUYaAoyRxB7lnsx511YVo4DRRJpF9plvOsWmrFrHYjWo7KIiRh5b2xF00af4IbXLp"}.TMDB_IMG;
 var http = axios__WEBPACK_IMPORTED_MODULE_0___default().create({
   baseURL: apiUrl
 });
@@ -5371,7 +6588,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-var key = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/aa24f0ae_c94b_472b_af79_57c77c089e86","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.308","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original"}.TMDB_KEY;
+var key = {"GJS_DEBUG_TOPICS":"JS ERROR;JS LOG","LANGUAGE":"en_GB:en","USER":"kazem","LC_TIME":"en_GB.UTF-8","npm_config_user_agent":"npm/8.5.4 node/v16.14.0 linux x64 workspaces/false","XDG_SESSION_TYPE":"x11","GIT_ASKPASS":"/usr/share/code/resources/app/extensions/git/dist/askpass.sh","npm_node_execpath":"/usr/local/bin/node","SHLVL":"2","npm_config_noproxy":"","HOME":"/home/kazem","OLDPWD":"/home/kazem/k90mirzaei/projects/clone/netflix","LESS":"-R","CHROME_DESKTOP":"code-url-handler.desktop","DESKTOP_SESSION":"ubuntu","TERM_PROGRAM_VERSION":"1.65.2","npm_package_json":"/home/kazem/k90mirzaei/projects/clone/netflix/package.json","ZSH":"/home/kazem/.oh-my-zsh","LSCOLORS":"Gxfxcxdxbxegedabagacad","GTK_MODULES":"gail:atk-bridge","GNOME_SHELL_SESSION_MODE":"ubuntu","PAGER":"less","APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL":"true","VSCODE_GIT_ASKPASS_MAIN":"/usr/share/code/resources/app/extensions/git/dist/askpass-main.js","LC_MONETARY":"en_GB.UTF-8","VSCODE_GIT_ASKPASS_NODE":"/usr/share/code/code","npm_config_userconfig":"/home/kazem/.npmrc","npm_config_local_prefix":"/home/kazem/k90mirzaei/projects/clone/netflix","SYSTEMD_EXEC_PID":"6048","DBUS_SESSION_BUS_ADDRESS":"unix:path=/run/user/1000/bus","P9K_TTY":"old","COLORTERM":"truecolor","COLOR":"1","npm_config_metrics_registry":"https://registry.npmjs.org/","IM_CONFIG_PHASE":"1","MANDATORY_PATH":"/usr/share/gconf/ubuntu.mandatory.path","LOGNAME":"kazem","_":"/usr/local/bin/npm","npm_config_prefix":"/usr/local","DEFAULTS_PATH":"/usr/share/gconf/ubuntu.default.path","XDG_SESSION_CLASS":"user","USERNAME":"kazem","TERM":"xterm-256color","npm_config_cache":"/home/kazem/.npm","GNOME_DESKTOP_SESSION_ID":"this-is-deprecated","WINDOWPATH":"2","npm_config_node_gyp":"/usr/local/lib/node_modules/npm/node_modules/node-gyp/bin/node-gyp.js","MIX_FILE":"webpack.mix","PATH":"/home/kazem/k90mirzaei/projects/clone/netflix/node_modules/.bin:/home/kazem/k90mirzaei/projects/clone/node_modules/.bin:/home/kazem/k90mirzaei/projects/node_modules/.bin:/home/kazem/k90mirzaei/node_modules/.bin:/home/kazem/node_modules/.bin:/home/node_modules/.bin:/node_modules/.bin:/usr/local/lib/node_modules/npm/node_modules/@npmcli/run-script/lib/node-gyp-bin:/home/kazem/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin","SESSION_MANAGER":"local/kazem-pc:@/tmp/.ICE-unix/6029,unix/kazem-pc:/tmp/.ICE-unix/6029","PAPERSIZE":"a4","NODE":"/usr/local/bin/node","GNOME_TERMINAL_SCREEN":"/org/gnome/Terminal/screen/d38ca45f_fcf0_47c4_ae42_e21f05d710cc","XDG_MENU_PREFIX":"gnome-","XDG_RUNTIME_DIR":"/run/user/1000","LC_ADDRESS":"en_GB.UTF-8","GDK_BACKEND":"x11","DISPLAY":":1","XDG_CURRENT_DESKTOP":"Unity","LANG":"en_GB.UTF-8","LC_TELEPHONE":"en_GB.UTF-8","XDG_SESSION_DESKTOP":"ubuntu","GNOME_TERMINAL_SERVICE":":1.3422","XMODIFIERS":"@im=ibus","XAUTHORITY":"/run/user/1000/gdm/Xauthority","LS_COLORS":"rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:","TERM_PROGRAM":"vscode","VSCODE_GIT_IPC_HANDLE":"/run/user/1000/vscode-git-10da8e4387.sock","npm_lifecycle_script":"mix watch","SSH_AUTH_SOCK":"/run/user/1000/keyring/ssh","SSH_AGENT_LAUNCHER":"gnome-keyring","ORIGINAL_XDG_CURRENT_DESKTOP":"ubuntu:GNOME","SHELL":"/usr/bin/zsh","LC_NAME":"en_GB.UTF-8","npm_lifecycle_event":"watch","QT_ACCESSIBILITY":"1","GDMSESSION":"ubuntu","LC_MEASUREMENT":"en_GB.UTF-8","LC_IDENTIFICATION":"en_GB.UTF-8","GPG_AGENT_INFO":"/run/user/1000/gnupg/S.gpg-agent:0:1","GJS_DEBUG_OUTPUT":"stderr","P9K_SSH":"0","QT_IM_MODULE":"ibus","VSCODE_GIT_ASKPASS_EXTRA_ARGS":"--ms-enable-electron-run-as-node","npm_config_globalconfig":"/usr/local/etc/npmrc","npm_config_init_module":"/home/kazem/.npm-init.js","PWD":"/home/kazem/k90mirzaei/projects/clone/netflix","npm_execpath":"/usr/local/lib/node_modules/npm/bin/npm-cli.js","XDG_CONFIG_DIRS":"/etc/xdg/xdg-ubuntu:/etc/xdg","XDG_DATA_DIRS":"/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop","_P9K_TTY":"/dev/pts/1","npm_config_global_prefix":"/usr/local","LC_NUMERIC":"en_GB.UTF-8","npm_command":"run-script","LC_PAPER":"en_GB.UTF-8","VTE_VERSION":"6402","NODE_ENV":"development","INIT_CWD":"/home/kazem/k90mirzaei/projects/clone/netflix","EDITOR":"vi","APP_NAME":"Netflix","APP_ENV":"local","APP_KEY":"base64:vUHDk/sd1rAynIbu0b+5XEveX3cr+b6dEE2cKhqpTik=","APP_DEBUG":"true","APP_URL":"http://127.0.0.1:8000","APP_API":"http://127.0.0.1:8000/api","LOG_CHANNEL":"stack","LOG_LEVEL":"debug","DB_CONNECTION":"sqlite","HTTP_PORT":"80:80","HTTPS_PORT":"443:443","BROADCAST_DRIVER":"log","FILESYSTEM_DRIVER":"local","QUEUE_CONNECTION":"sync","SESSION_DRIVER":"file","SESSION_LIFETIME":"120","MAIL_MAILER":"smtp","MAIL_HOST":"mailhog","MAIL_PORT":"1025","MAIL_USERNAME":"null","MAIL_PASSWORD":"null","MAIL_ENCRYPTION":"null","MAIL_FROM_ADDRESS":"null","MAIL_FROM_NAME":"${APP_NAME}","PUSHER_APP_ID":"","PUSHER_APP_KEY":"","PUSHER_APP_SECRET":"","PUSHER_APP_CLUSTER":"mt1","MIX_PUSHER_APP_KEY":"${PUSHER_APP_KEY}","MIX_PUSHER_APP_CLUSTER":"${PUSHER_APP_CLUSTER}","TMDB_KEY":"74fe3efde81beb239dc9ce1ab2aed147","TMDB_API":"https://api.themoviedb.org/3","TMDB_IMG":"https://image.tmdb.org/t/p/original","STRIPE_KEY":"pk_test_51KhyCsDzXYnylfPdwYkDjVU5WQhdXLwbV42Nz3F08brMHac3SzQKSFrHFxSfRiDpNvD13FkiXp6H7qXVGHi3LoT900RTLYDGWl","STRIPE_SECRET":"sk_test_51KhyCsDzXYnylfPdYQ7fmkIeoeVj1Qix5rUYaAoyRxB7lnsx511YVo4DRRJpF9plvOsWmrFrHYjWo7KIiRh5b2xF00af4IbXLp"}.TMDB_KEY;
 var requests = {
   trending: {
     title: "Trending",
@@ -5407,6 +6624,40 @@ var requests = {
   }
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (requests);
+
+/***/ }),
+
+/***/ "./resources/js/services/subscriptionService.js":
+/*!******************************************************!*\
+  !*** ./resources/js/services/subscriptionService.js ***!
+  \******************************************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   "confirm": () => (/* binding */ confirm),
+/* harmony export */   "getPlan": () => (/* binding */ getPlan),
+/* harmony export */   "getPlans": () => (/* binding */ getPlans),
+/* harmony export */   "getSecretKey": () => (/* binding */ getSecretKey)
+/* harmony export */ });
+/* harmony import */ var _httpService__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./httpService */ "./resources/js/services/httpService.js");
+
+function getPlans() {
+  return _httpService__WEBPACK_IMPORTED_MODULE_0__["default"].get("subscriptions");
+}
+function getPlan(id) {
+  return _httpService__WEBPACK_IMPORTED_MODULE_0__["default"].get("subscriptions/" + id);
+}
+function getSecretKey() {
+  return _httpService__WEBPACK_IMPORTED_MODULE_0__["default"].get("create-payment-intent");
+}
+function confirm(intent, plan_id) {
+  return _httpService__WEBPACK_IMPORTED_MODULE_0__["default"].post("stripe/confirm", {
+    id: plan_id,
+    intent: intent
+  });
+}
 
 /***/ }),
 

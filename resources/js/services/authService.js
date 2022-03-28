@@ -24,6 +24,8 @@ function dispatchUser(user) {
             loginAction({
                 name: user.name,
                 email: user.email,
+                subscribed: user.subscribed,
+                plan: user.plan
             })
         );
     }
