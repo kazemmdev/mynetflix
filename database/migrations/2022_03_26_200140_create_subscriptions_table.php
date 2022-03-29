@@ -18,13 +18,12 @@ class CreateSubscriptionsTable extends Migration
             $table->timestamps();
         });
 
-        Schema::create('subscription_user', function (Blueprint $table) {
-            $table->bigIncrements('id');        
-            $table->string('user_id');
+        Schema::create('subscription_user', function (Blueprint $table) {  
+            $table->unsignedInteger('user_id');
             $table->foreign('user_id')
                 ->references('id')
                 ->on('users')->onDelete('cascade');
-            $table->string('subscription_id');
+            $table->unsignedInteger('subscription_id');
             $table->foreign('subscription_id')
                 ->references('id')
                 ->on('subscriptions')->onDelete('cascade');
