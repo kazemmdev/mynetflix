@@ -1,11 +1,8 @@
 import axios from "axios";
 import tmdbs from "../services/movieConstant";
 
-const apiUrl = process.env.TMDB_API;
-const imgUrl = process.env.TMDB_IMG;
-
 const http = axios.create({
-    baseURL: apiUrl,
+    baseURL: process.env.TMDB_URL,
 });
 
 export function fetchTrending() {
@@ -46,7 +43,7 @@ export function fetchMovies(url) {
 
 export function getPoster(movie, large = true) {
     return (
-        imgUrl +
+        process.env.TMDB_IMG +
         (large ? movie.backdrop_path ?? movie.poster_path : movie.poster_path)
     );
 }

@@ -3,7 +3,7 @@ const key = process.env.TMDB_KEY;
 const requests = {
     trending: {
         title: "Trending",
-        url: `/trending/all/week?api_key=${key}&language=en-US`,
+        url: `/trending/movie/week?api_key=${key}&language=en-US`,
     },
     netflix: {
         title: "Netflix Originals",

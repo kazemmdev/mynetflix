@@ -1,5 +1,5 @@
 # ! Docker-Compose Specification
-version: '3.8'
+version: '3.3'
 
 # ! Define Project Network
 networks:
