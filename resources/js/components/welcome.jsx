@@ -1,8 +1,19 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Input from "../components/input";
 
 const Welcome = () => {
+    const navigate = useNavigate();
     const [email, setEmail] = useState("");
+
+    const sendToRegister = (e) => {
+        e.preventDefault();
+
+        if(email) {
+            navigate("/register?mail=" + email)
+        }
+    }
+
     return (
         <div className="relative h-screen border-b-8 border-gray-800 px-11">
             <div className="absolute inset-0 -top-24 -z-1">
@@ -20,7 +31,7 @@ const Welcome = () => {
                 <h2 className="text-2xl my-4">
                     Watch anywhere. Cancel anytime.
                 </h2>
-                <form className="mx-auto max-w-3xl w-full" action="">
+                <form className="mx-auto max-w-3xl w-full" onSubmit={sendToRegister}>
                     <h3 className="text-lg my-4">
                         Ready to watch? Enter your email to create or restart
                         your membership.

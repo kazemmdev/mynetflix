@@ -1,17 +1,19 @@
 import { useState } from "react";
 import { register } from "../services/authService";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import Input from "../components/input";
 
 const Register = () => {
-    const navigation = useNavigate();
-
+    const navigate = useNavigate();
+    const [searchParams] = useSearchParams();
+const mail = searchParams.get('mail') 
     const [name, setName] = useState("");
-    const [email, setEmail] = useState("");
+    const [email, setEmail] = useState(mail??"");
     const [password, setPassword] = useState("");
     const [password_confirmation, setPasswordConfirm] = useState("");
 
     const [errors, setErrors] = useState([]);
+
 
     const submitHandle = async (e) => {
         e.preventDefault();
@@ -21,7 +23,7 @@ const Register = () => {
             password: password,
             password_confirmation: password_confirmation,
         })
-            .then(() => navigation("/"))
+            .then(() => navigate("/"))
             .catch((error) => setErrors(error.response.data.errors));
     };
 
