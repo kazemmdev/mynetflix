@@ -1,2 +1,2 @@
-web: vendor/bin/heroku-php-nginx -C .docker/nginx.conf public/
+web: vendor/bin/heroku-php-apache2 f public/
 worker: php artisan queue:listen
